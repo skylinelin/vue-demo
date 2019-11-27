@@ -1,2 +1,2 @@
 # vue-demo
- vue练习
+ vue开发中常用练习
