@@ -9,6 +9,8 @@
 <body>
     <div id="sky">
         <h1>{{ name }}</h1>
+        <span v-text="name"></span>
+        <input v-model="age"></input>
         <button @click="helloClick()">点一下</button>
 
     </div>
@@ -18,13 +20,17 @@
     const app = new Vue({
         el: "#sky",
         data: {
-            name: "林法扬",
+            name: "",
             age: 21
         },
         methods: {
             helloClick(){
                 console.log("打印一下");
             }
+        },
+        created() {
+            //向后台发送ajax请求，完成对data数据初始化
+            this.name="林法扬";
         },
     });
 </script>
