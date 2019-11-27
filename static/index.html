@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vuetest</title>
+</head>
+<body>
+    <div id="sky">
+        <h1>{{ name }}</h1>
+        <button @click="helloClick()">点一下</button>
+
+    </div>
+    
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#sky",
+        data: {
+            name: "林法扬"
+        },
+        methods: {
+            helloClick(){
+                console.log("打印一下");
+            }
+        },
+    });
+</script>
+</body>
+</html>
