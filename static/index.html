@@ -29,7 +29,57 @@
 
         <h1>购买下列课程：{{lessons.join(",")}}</h1>
 
+        <hr>
+        <h1>事件冒泡</h1>
+        <div style="width: 100px; height: 100px; background-color: aquamarine;" @click.stop="print('div')">div
+            <button @click.stop="print('按钮')">点我</button><br>
+            <a href="www.baidu.com" @click.prevent.stop="print('百度一下，你就疯了')">百度</a>
+        </div>
+        <hr>
+        <!-- v-for 遍历数组-->
+        <ul>
+            <li v-for="u in users">
+                {{u.name+","+u.gender}}
+            </li>
+        </ul>
+        <!-- 也可以取得下标 -->
+        <ul>
+            <li v-for="(a,index) in users">
+                {{index+"、"+a.name}}
+            </li>
+        </ul>
+
+        <hr>
+        <!-- 遍历对象 -->
+        <ul>
+            <li v-for="u in users[0]">
+                {{u}}
+            </li>
+        </ul>
+        <!-- 遍历 索引 value key -->
+        <ul>
+            <li v-for="(v,k,i) in users[1]">
+                {{i+" "+k+" "+v}}
+            </li>
+        </ul>
+
+        <hr>
+        <!-- v-if v-show -->
+        <button @click="show = !show">点击我</button>
+        <h1 v-show="show">
+            显示v-show
+        </h1>
+        <!-- 相对于上面性能低，重新渲染 -->
+        <button @click="show = !show">点击我</button>
+        <h1 v-if="show">
+            显示v-if
+        </h1>
+
+
     </div>
+   
+
+
     
 <script src="../node_modules/vue/dist/vue.js"></script>
 <script>
@@ -38,11 +88,22 @@
         data: {
             name: "",
             age: 21,
-            lessons: []
+            lessons: [],
+            users:[
+                {name:'柳岩', gender:'女', age: 21},
+                {name:'峰哥', gender:'男', age: 18},
+                {name:'范冰冰', gender:'女', age: 24},
+                {name:'刘亦菲', gender:'女', age: 18},
+                {name:'古力娜扎', gender:'女', age: 25}
+            ],
+            show: true
         },
         methods: {
             helloClick(){
                 console.log("打印一下");
+            },
+            print(a){
+                console.log(a);
             }
         },
         created() {
