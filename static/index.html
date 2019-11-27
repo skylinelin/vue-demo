@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="../bootstrap-3.3.7-dist/css/bootstrap.css"/>
     <title>vuetest</title>
 </head>
 <body>
@@ -12,6 +13,21 @@
         <span v-text="name"></span>
         <input v-model="age"></input>
         <button @click="helloClick()">点一下</button>
+    
+        <h1>有以下课程</h1>
+        <label class="checkbox-inline">
+             <input type="checkbox" v-model="lessons" id="inlineCheckbox1" value="《Java核心技术卷1》"> 《Java核心技术卷1》
+        </label>
+        <br>
+        <label class="checkbox-inline">
+            <input type="checkbox" v-model="lessons" id="inlineCheckbox2" value="《Java核心技术卷2》"> 《Java核心技术卷2》
+        </label>
+        <br>
+        <label class="checkbox-inline">
+            <input type="checkbox" v-model="lessons" id="inlineCheckbox3" value="《Java编程思想》"> 《Java编程思想》
+        </label>
+
+        <h1>购买下列课程：{{lessons.join(",")}}</h1>
 
     </div>
     
@@ -21,7 +37,8 @@
         el: "#sky",
         data: {
             name: "",
-            age: 21
+            age: 21,
+            lessons: []
         },
         methods: {
             helloClick(){
