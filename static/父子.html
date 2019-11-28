@@ -9,6 +9,8 @@
 <body>
     <div id="app">
         <inter :title="msg"></inter>
+        <lessarr :less="lessmsg"></lessarr>
+        <lessarr></lessarr>
     </div>
     
     <script src="../node_modules/vue/dist/vue.js"></script>
@@ -23,15 +25,31 @@
             },
             props: ['title'],
         }
+
+        // 定义局部组件
+        const lessarr = {
+            template: "<ul><li v-for='u in less'>{{u}}</li></ul>",
+            //props: ['less'],
+            // 另一种写法
+            props: {
+                less: {
+                    // 限定类型必须是数组类型
+                    type: Array,
+                    // 默认值
+                    default: ['林','法','扬']
+                }
+            }
+        }
         
         // 定义父组件，向子组件传值
         const app = new Vue({
             el: "#app",
             data: {
-                msg: "大家好，我是渣渣辉，欢迎来到贪玩难约。"
+                msg: "大家好，我是渣渣辉，欢迎来到贪玩难约。",
+                lessmsg: ['aaa','bbb','ccc']
             },
             components: {
-                inter
+                inter,lessarr
             }
 
         });

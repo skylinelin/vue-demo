@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子向父的通信</title>
+</head>
+
+<body>
+    <div id="app">
+        <counter :num="count" @inc="add" @dec="reduce"></counter>
+        <h2>{{count}}</h2>
+    </div>
+
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        // 定义局部组件
+        const counter = {
+            template: `
+            <div>
+                <button @click="puls"> + </button>
+                <button @click="pul"> - </button>
+            </div>
+            `,
+            props: ['num'],
+            methods: {
+                puls() {
+                    this.$emit("inc");
+                },
+                pul() {
+                    this.$emit("dec");
+                }
+            },
+        }
+
+
+        const app = new Vue({
+            el: "#app",
+            data: {
+                count: 0,
+            },
+            components: {
+                counter,
+            },
+            methods: {
+                add() {
+                    this.count++;
+                },
+                reduce() {
+                    this.count--;
+                }
+            },
+
+        });
+    </script>
+</body>
+
+</html>
