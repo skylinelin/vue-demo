@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件</title>
+</head>
+<body>
+    <div id="app">
+            <counter></counter>
+            <counter></counter>
+            <www></www>
+            <cou></cou>
+            
+    </div>
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 定义全局组件
+        Vue.component("counter",{
+            // 不要el
+            // 只能由一个根标签
+            template: "<button @click='count++'>点我试试，我记住你了{{count}}</button>",
+            data() {
+                return {
+                    count: 0
+                }
+            },
+        });
+
+        // 定义局部组件
+        const cou = {
+            // 不要el
+            // 只能由一个根标签
+            template: "<button @click='count++'>点我试试{{count}}</button>",
+            data() {
+                return {
+                    count: 0
+                }
+            },
+        }
+
+        const app = new Vue({
+            el: "#app",
+            data: {},
+            // 定义局部组件
+            components: {
+                www:cou,
+                cou
+            }
+        });
+       
+    </script>    
+</body>
+</html>

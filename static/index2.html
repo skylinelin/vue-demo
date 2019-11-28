@@ -5,8 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>v-bind</title>
+    <style>
+        #box{
+            width: 300px;
+            height: 300px;
+        }
+        .red{
+            background-color: #5a1216;
+        }
+        .blue{
+            background-color: #15559a;
+        }
+    </style>
 </head>
 <body>
+    <div id="sky">
+        <button @click="isRed=!isRed">点击换色</button>
+        <div id="box" v-bind:class="{red:isRed,blue:!isRed}"></div>
+
+        <!-- 计算属性 -->
+    <hr>
+    <h1>您的生日：{{ birth }}</h1>
+    </div>
+
     
+    
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#sky",
+            data: {
+                isRed:true,
+                day: 1529032123201
+            },
+            computed: {
+                birth(){
+                    const biday = new Date(this.day);
+                    return biday.getFullYear()+"年"+biday.getMonth()+"月"+biday.getDay()+"日";
+                }
+            },
+        });
+    </script>
 </body>
 </html>
