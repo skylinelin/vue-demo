@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父子之间通信</title>
+</head>
+<body>
+    <div id="app">
+        <inter :title="msg"></inter>
+    </div>
+    
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 定义局部组件
+        const inter = {
+            template: "<h1>{{title}}</h1>",
+            data() {
+                return {
+                    
+                }
+            },
+            props: ['title'],
+        }
+        
+        // 定义父组件，向子组件传值
+        const app = new Vue({
+            el: "#app",
+            data: {
+                msg: "大家好，我是渣渣辉，欢迎来到贪玩难约。"
+            },
+            components: {
+                inter
+            }
+
+        });
+    </script>
+</body>
+</html>
